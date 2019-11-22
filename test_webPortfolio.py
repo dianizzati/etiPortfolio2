@@ -20,14 +20,6 @@ def test_Consecutively():
 
 test_Consecutively()
 
-def test_remote():
-    driver = webdriver.Remote(
-       command_executor='http://127.0.0.1:4444/wd/hub',
-       desired_capabilities={'browserName': 'htmlunit',
-                         'version': '2',
-                        'javascriptEnabled': True})
-test_remote()
-
 #################
 #     Admin     #
 #################
@@ -294,7 +286,7 @@ def test_scrollTofindText():
     driver = webdriver.Chrome()
     driver.get("http://localhost:8000/projects/")
     driver.execute_script("window.scrollTo(0,document.body.scrollHeight)")
-    elem = driver.find_element_by_xpath("//h4[text()='Awards']")
+    elem = driver.find_element_by_name("scrollToAward")
     assert "Projects" in driver.title
     driver.close()
     
@@ -306,7 +298,7 @@ def test_assertValuesinSearch():
     driver = webdriver.Chrome()
     driver.get("http://localhost:8000/projects/")
     assert "Projects" in driver.title
-    elem = driver.find_element_by_name("searchDip")
+    elem = driver.find_element_by_name("searchDiploma")
     elem.clear()
     elem.send_keys("Diploma")
     elem.send_keys(Keys.RETURN)
