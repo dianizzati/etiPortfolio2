@@ -6,16 +6,18 @@ from selenium.webdriver.common.desired_capabilities import DesiredCapabilities
 
 #for mac chromer driver path
 #chrome_path = r'/usr/local/bin/chromedriver'
+#driver = webdriver.Chrome(executable_path = chrome_path)
 
 def test_Consecutively():
-    #driver = webdriver.Chrome(executable_path = chrome_path)
-    driver = webdriver.Chrome()
+
+    chrome_path = r'/usr/local/bin/chromedriver'
+    driver = webdriver.Chrome(executable_path = chrome_path)
     driver.get("http://localhost:8000/admin/")
 
-    driver2 = webdriver.Chrome()
+    driver2 = webdriver.Chrome(executable_path = chrome_path)
     driver2.get("http://localhost:8000/projects/")
 
-    driver3 = webdriver.Chrome()
+    driver3 = webdriver.Chrome(executable_path = chrome_path)
     driver3.get("http://localhost:8000/blog/")
 
 test_Consecutively()
@@ -24,6 +26,9 @@ test_Consecutively()
 #     Admin     #
 #################
 def test_loginNoAdmin(): #assert cant login
+
+    chrome_path = r'/usr/local/bin/chromedriver'
+    driver = webdriver.Chrome(executable_path = chrome_path)
     driver.get("http://localhost:8000/admin")
     assert "Django" in driver.title
 
@@ -36,13 +41,16 @@ def test_loginNoAdmin(): #assert cant login
     password.send_keys("??!!@@#")
 
     driver.find_element_by_xpath("//input[@type='submit' and @value='Log in']").click()
-    assert "Please enter the correct username and password for a staff account. Note that both fields may be case-sensitive." not in driver.page_source
+    assert "Wrong Password" not in driver.page_source
     driver.close()
     
 test_loginNoAdmin()
     
 
 def test_login(): #have admin access
+
+    chrome_path = r'/usr/local/bin/chromedriver'
+    driver = webdriver.Chrome(executable_path = chrome_path)
     driver.get("http://localhost:8000/admin")
     assert "Django" in driver.title
 
@@ -61,6 +69,9 @@ test_login()
 #Add Category #given userabc1 superuser access to add category
 
 def test_AddCategoryCCAActivities(): #have admin access
+
+    chrome_path = r'/usr/local/bin/chromedriver'
+    driver = webdriver.Chrome(executable_path = chrome_path)
     driver.get("http://localhost:8000/admin")
     assert "Django" in driver.title
 
@@ -85,63 +96,12 @@ def test_AddCategoryCCAActivities(): #have admin access
     driver.find_element_by_xpath("//input[@type='submit' and @value='Save']").click()
 
 
-test_test_AddCategoryCCAActivities()
-
-def test_AddCategoryProjects(): #have admin access
-    driver.get("http://localhost:8000/admin")
-    assert "Django" in driver.title
-
-    username = driver.find_element_by_name("username")
-    username.clear()
-    username.send_keys("userabc1")
-
-    password = driver.find_element_by_name("password")
-    password.clear()
-    password.send_keys("abc1234567@")
-
-    driver.find_element_by_xpath("//input[@type='submit' and @value='Log in']").click()
-
-    driver.find_element_by_link_text("Categorys").click()
-
-    driver.find_element_by_class_name("addlink").click()
-
-    addCategory = driver.find_element_by_name("name")
-    addCategory.clear()
-    addCategory.send_keys("Projects")
-
-    driver.find_element_by_xpath("//input[@type='submit' and @value='Save']").click()
-
-
-test_test_AddCategoryProjects()
-
-def test_AddCategoryHobbies(): #have admin access
-    driver.get("http://localhost:8000/admin")
-    assert "Django" in driver.title
-
-    username = driver.find_element_by_name("username")
-    username.clear()
-    username.send_keys("userabc1")
-
-    password = driver.find_element_by_name("password")
-    password.clear()
-    password.send_keys("abc1234567@")
-
-    driver.find_element_by_xpath("//input[@type='submit' and @value='Log in']").click()
-
-    driver.find_element_by_link_text("Categorys").click()
-
-    driver.find_element_by_class_name("addlink").click()
-
-    addCategory = driver.find_element_by_name("name")
-    addCategory.clear()
-    addCategory.send_keys("Hobbies")
-
-    driver.find_element_by_xpath("//input[@type='submit' and @value='Save']").click()
-
-
-test_test_AddCategoryHobbies()
+test_AddCategoryCCAActivities()
 
 def test_AddCategoryFail(): #have admin access but assert fail
+
+    chrome_path = r'/usr/local/bin/chromedriver'
+    driver = webdriver.Chrome(executable_path = chrome_path)
     driver.get("http://localhost:8000/admin")
     assert "Django" in driver.title
 
@@ -172,6 +132,9 @@ test_AddCategoryFail()
 #Add Post #given userabc1 superuser access to add post
 
 def test_AddPostFail(): #have admin access
+
+    chrome_path = r'/usr/local/bin/chromedriver'
+    driver = webdriver.Chrome(executable_path = chrome_path)
     driver.get("http://localhost:8000/admin")
     assert "Django" in driver.title
     
@@ -211,6 +174,9 @@ test_AddPostFail()
 #     Blog      #
 #################
 def test_AddComment(): #have admin access
+
+    chrome_path = r'/usr/local/bin/chromedriver'
+    driver = webdriver.Chrome(executable_path = chrome_path)
     driver.get("http://localhost:8000/admin")
     assert "Django" in driver.title
     
@@ -242,6 +208,9 @@ def test_AddComment(): #have admin access
 test_AddComment()
 
 def test_AddCommentFail(): #have admin access
+
+    chrome_path = r'/usr/local/bin/chromedriver'
+    driver = webdriver.Chrome(executable_path = chrome_path)
     driver.get("http://localhost:8000/admin")
     assert "Django" in driver.title
     
@@ -271,8 +240,11 @@ def test_AddCommentFail(): #have admin access
 test_AddCommentFail()
 
 def test_scroll_quit():
+
+    chrome_path = r'/usr/local/bin/chromedriver'
+    driver = webdriver.Chrome(executable_path = chrome_path)
     #chrome_path = r'/usr/local/bin/chromedriver'
-    driver = webdriver.Chrome()
+    #driver = webdriver.Chrome()
     driver.get("http://localhost:8000/projects/")
     assert "Projects" in driver.title
     driver.execute_script("window.scrollTo(0,document.body.scrollHeight)")
@@ -282,8 +254,11 @@ def test_scroll_quit():
 test_scroll_quit()
 
 def test_scrollTofindText():
+
+    chrome_path = r'/usr/local/bin/chromedriver'
+    driver = webdriver.Chrome(executable_path = chrome_path)
     #chrome_path = r'/usr/local/bin/chromedriver'
-    driver = webdriver.Chrome()
+    #driver = webdriver.Chrome()
     driver.get("http://localhost:8000/projects/")
     driver.execute_script("window.scrollTo(0,document.body.scrollHeight)")
     elem = driver.find_element_by_name("scrollToAward")
@@ -294,8 +269,10 @@ test_scrollTofindText()
 
 
 def test_assertValuesinSearch():
-    
-    driver = webdriver.Chrome()
+
+    chrome_path = r'/usr/local/bin/chromedriver'
+    driver = webdriver.Chrome(executable_path = chrome_path)
+    #driver = webdriver.Chrome()
     driver.get("http://localhost:8000/projects/")
     assert "Projects" in driver.title
     elem = driver.find_element_by_name("searchDiploma")
@@ -306,11 +283,13 @@ def test_assertValuesinSearch():
 test_assertValuesinSearch()
 
 def test_assertValuesinSearchFail():
-    
-    driver = webdriver.Chrome()
+
+    chrome_path = r'/usr/local/bin/chromedriver'
+    driver = webdriver.Chrome(executable_path = chrome_path)
+    #driver = webdriver.Chrome()
     driver.get("http://localhost:8000/projects/")
     assert "Projects" in driver.title
-    elem = driver.find_element_by_name("searchDip")
+    elem = driver.find_element_by_name("searchDiploma")
     elem.clear()
     elem.send_keys("funplace")
     elem.send_keys(Keys.RETURN)
