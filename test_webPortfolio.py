@@ -49,8 +49,8 @@ test_loginNoAdmin()
 
 def test_login(): #have admin access
 
-    chrome_path = r'/usr/local/bin/chromedriver'
-    driver = webdriver.Chrome(executable_path = chrome_path)
+    #chrome_path = r'/usr/local/bin/chromedriver'
+    driver = webdriver.Chrome()
     driver.get("http://localhost:8000/admin")
     assert "Django" in driver.title
 
@@ -70,8 +70,8 @@ test_login()
 
 def test_AddCategoryCCAActivities(): #have admin access
 
-    chrome_path = r'/usr/local/bin/chromedriver'
-    driver = webdriver.Chrome(executable_path = chrome_path)
+    #chrome_path = r'/usr/local/bin/chromedriver'
+    driver = webdriver.Chrome()
     driver.get("http://localhost:8000/admin")
     assert "Django" in driver.title
 
@@ -100,8 +100,8 @@ test_AddCategoryCCAActivities()
 
 def test_AddCategoryFail(): #have admin access but assert fail
 
-    chrome_path = r'/usr/local/bin/chromedriver'
-    driver = webdriver.Chrome(executable_path = chrome_path)
+    #chrome_path = r'/usr/local/bin/chromedriver'
+    driver = webdriver.Chrome()
     driver.get("http://localhost:8000/admin")
     assert "Django" in driver.title
 
@@ -133,8 +133,8 @@ test_AddCategoryFail()
 
 def test_AddPostFail(): #have admin access
 
-    chrome_path = r'/usr/local/bin/chromedriver'
-    driver = webdriver.Chrome(executable_path = chrome_path)
+    #chrome_path = r'/usr/local/bin/chromedriver'
+    driver = webdriver.Chrome()
     driver.get("http://localhost:8000/admin")
     assert "Django" in driver.title
     
@@ -175,8 +175,8 @@ test_AddPostFail()
 #################
 def test_AddComment(): #have admin access
 
-    chrome_path = r'/usr/local/bin/chromedriver'
-    driver = webdriver.Chrome(executable_path = chrome_path)
+    #chrome_path = r'/usr/local/bin/chromedriver'
+    driver = webdriver.Chrome()
     driver.get("http://localhost:8000/admin")
     assert "Django" in driver.title
     
@@ -209,8 +209,8 @@ test_AddComment()
 
 def test_AddCommentFail(): #have admin access
 
-    chrome_path = r'/usr/local/bin/chromedriver'
-    driver = webdriver.Chrome(executable_path = chrome_path)
+    #chrome_path = r'/usr/local/bin/chromedriver'
+    driver = webdriver.Chrome()
     driver.get("http://localhost:8000/admin")
     assert "Django" in driver.title
     
@@ -241,8 +241,8 @@ test_AddCommentFail()
 
 def test_scroll_quit():
 
-    chrome_path = r'/usr/local/bin/chromedriver'
-    driver = webdriver.Chrome(executable_path = chrome_path)
+    #chrome_path = r'/usr/local/bin/chromedriver'
+    driver = webdriver.Chrome()
     #chrome_path = r'/usr/local/bin/chromedriver'
     #driver = webdriver.Chrome()
     driver.get("http://localhost:8000/projects/")
@@ -255,8 +255,8 @@ test_scroll_quit()
 
 def test_scrollTofindText():
 
-    chrome_path = r'/usr/local/bin/chromedriver'
-    driver = webdriver.Chrome(executable_path = chrome_path)
+    #chrome_path = r'/usr/local/bin/chromedriver'
+    driver = webdriver.Chrome()
     #chrome_path = r'/usr/local/bin/chromedriver'
     #driver = webdriver.Chrome()
     driver.get("http://localhost:8000/projects/")
@@ -270,8 +270,8 @@ test_scrollTofindText()
 
 def test_assertValuesinSearch():
 
-    chrome_path = r'/usr/local/bin/chromedriver'
-    driver = webdriver.Chrome(executable_path = chrome_path)
+    #chrome_path = r'/usr/local/bin/chromedriver'
+    driver = webdriver.Chrome()
     #driver = webdriver.Chrome()
     driver.get("http://localhost:8000/projects/")
     assert "Projects" in driver.title
@@ -284,8 +284,8 @@ test_assertValuesinSearch()
 
 def test_assertValuesinSearchFail():
 
-    chrome_path = r'/usr/local/bin/chromedriver'
-    driver = webdriver.Chrome(executable_path = chrome_path)
+    #chrome_path = r'/usr/local/bin/chromedriver'
+    driver = webdriver.Chrome()
     #driver = webdriver.Chrome()
     driver.get("http://localhost:8000/projects/")
     assert "Projects" in driver.title

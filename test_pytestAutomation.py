@@ -6,17 +6,17 @@ from selenium.webdriver.chrome.options import Options
 from selenium.webdriver.common.keys import Keys
 from time import sleep
 
-chrome_path = r'/usr/local/bin/chromedriver'
-firefox_path = r'/usr/local/bin/geckodriver'
+#chrome_path = r'/usr/local/bin/chromedriver'
+#firefox_path = r'/usr/local/bin/geckodriver'
 
 #Fixture for google automation
 #Testing for GUI automation
 @pytest.fixture(params=["chrome", "firefox"],scope="class")
 def driver_init(request):
     if request.param == "chrome":
-        web_driver = webdriver.Chrome(executable_path = chrome_path)
+        web_driver = webdriver.Chrome()
     if request.param == "firefox":
-        web_driver = webdriver.Firefox(executable_path = firefox_path)
+        web_driver = webdriver.Firefox()
     request.cls.driver = web_driver
     yield
     web_driver.close()
